@@ -11,7 +11,7 @@ That is, G maps a point (x, y) to a 2x2 matrix.
 """
 if __name__ == '__main__':
 
-    X, Y = np.mgrid[-1:7:0.5, -1:7:0.5]
+    X, Y = np.mgrid[-1:8:0.5, -1:8:0.5]
 
     # f(x,y) = [cos(x), sin(xy)]
     U = np.cos(X)
@@ -24,7 +24,7 @@ if __name__ == '__main__':
     ax.set_ylim(-1, 7)
     ax.set_xlabel('x')
     ax.set_ylabel('y')
-    ax.set_title('f(x,y) = [cos(x), sin(xy)]')
+    ax.set_title('$f(x,y) = [cos(x), sin(xy)]$')
 
     # ∇f(x,y) = [
     #  -sin(x)    0
@@ -41,6 +41,7 @@ if __name__ == '__main__':
     E1_V = np.zeros(shape=G1_U.shape)
     E2_U = np.zeros(shape=G1_U.shape)
     E2_V = np.zeros(shape=G1_U.shape)
+    NORM = np.zeros(shape=G1_U.shape)
     for i in range(len(G1_U)):
         for j in range(len(G1_U[i])):
             mat = np.array([
@@ -54,6 +55,7 @@ if __name__ == '__main__':
             E1_V[i, j] = first_vec[1]
             E2_U[i, j] = second_vec[0]
             E2_V[i, j] = second_vec[1]
+            NORM[i, j] = np.linalg.norm(mat)
     # ax.quiver(X, Y, E1_U, E1_V, color='green')
     # ax.quiver(X, Y, E2_U, E2_V, color='blue')
 
@@ -68,5 +70,23 @@ if __name__ == '__main__':
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     ax.set_title('$\\nabla$f(x,y)')
+
+    fig = plt.figure(3)
+    ax = plt.axes()
+
+    # Color the vectors of the field using the Frobenius norm of the corresponding gradient tensors.
+    c = (NORM.ravel() - NORM.min()) / NORM.ptp()
+    cmap = "hot_r"
+    c = getattr(plt.cm, cmap)(c)
+    q = ax.quiver(X, Y, U, V, cmap=cmap)
+    fig.colorbar(q, shrink=0.7, aspect=20 * 0.7, label='$‖$ $\\nabla f$ $‖_F$')
+    q.set_edgecolor(c)
+    q.set_facecolor(c)
+
+    ax.set_xlim(-1, 7)
+    ax.set_ylim(-1, 7)
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_title('$f(x,y) = [cos(x), sin(xy)]$')
 
     plt.show()
