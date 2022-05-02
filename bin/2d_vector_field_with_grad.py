@@ -1,9 +1,10 @@
+# -*- coding: utf-8 -*-
 import numpy as np
 from matplotlib import pyplot as plt
 
 """
-The grad (∇) of a 2D vector field f(x,y) is a 2D rank-2 tensor field, G(x,y).
-That is, G maps a point (x, y) to a 2x2 matrix.
+The grad (∇) of a 2D vector field f(x,y) is a 2D rank-2 tensor field, J(x,y).
+That is, J maps a point (x, y) to a 2x2 matrix (also known as the Jacobian). 
 ∇f(x,y) = [
  ∂f₁/∂x ∂f₁/∂y  
  ∂f₂/∂x ∂f₂/∂y
