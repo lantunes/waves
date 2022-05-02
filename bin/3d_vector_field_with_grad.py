@@ -4,8 +4,8 @@ import numpy as np
 
 
 """
-The grad (∇) of a 3D vector field f(x,y,z) is a 3D rank-3 tensor field, G(x,y,z).
-That is, G maps a point (x, y, z) to a 3x3 matrix.
+The grad (∇) of a 3D vector field f(x,y,z) is a 3D rank-2 tensor field, J(x,y,z).
+That is, J maps a point (x, y, z) to a 3x3 matrix (also known as the Jacobian).
 ∇f(x,y) = [
  ∂f₁/∂x ∂f₁/∂y ∂f₁/∂z
  ∂f₂/∂x ∂f₂/∂y ∂f₂/∂z
