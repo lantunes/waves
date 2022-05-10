@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     A = 1
     k = 6
-    omega = 0
+    omega = 1
     phi = 0
 
     def f(x, t):
