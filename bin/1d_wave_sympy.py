@@ -9,7 +9,7 @@ from contextlib import redirect_stdout
 
 if __name__ == '__main__':
 
-    # this could be symbols that are constants in the library that could be exported to users
+    # these could be symbols that are constants in the library that could be exported to users
     phi = "φ"
     omega = "ω"
     psi = "Ψ"
