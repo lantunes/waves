@@ -33,8 +33,8 @@ if __name__ == '__main__':
         f_fs = a_0 / 2
 
         for n in range(1, m + 1):
-            a_n = (2 / L) * np.sum(np.multiply(f, np.cos(2 * np.pi * n * X / L))) * dx
-            b_n = (2 / L) * np.sum(np.multiply(f, np.sin(2 * np.pi * n * X / L))) * dx
+            a_n = (2 / L) * np.sum(np.multiply(f, np.cos(2 * np.pi * n * X / L)) * dx)
+            b_n = (2 / L) * np.sum(np.multiply(f, np.sin(2 * np.pi * n * X / L)) * dx)
             f_fs = f_fs + a_n * np.cos(2 * np.pi * n * X / L) + b_n * np.sin(2 * np.pi * n * X / L)
 
         line.set_data(X, f_fs)
